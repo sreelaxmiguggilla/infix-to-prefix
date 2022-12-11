@@ -6,16 +6,16 @@ char stack[10];
 int  top=-1;
 void main()
 {
-	char st[10],prefix[10];
+	char infix[10],prefix[10];
 	int i,j=0;
-	printf("eterstrig");
-	scanf("%s",st);
-	strrev(st);
-	for(i=0;st[i]!='\0';i++)
+	printf("eter any infix string");
+	scanf("%s",infix);
+	strrev(infix);
+	for(i=0;infix[i]!='\0';i++)
 	{
-	if(st[i]==')')
-	push(st[i]);
-	else if(st[i]=='(')
+	if(infix[i]==')')
+	push(infix[i]);
+	else if(infix[i]=='(')
 	{
 		while(stack[top]!=')')
 		{
@@ -24,19 +24,19 @@ void main()
 		}
 	    pop();
 	}
-	else if(st[i]>='a' && st[i]<='z')
+	else if(infix[i]>='a' && infix[i]<='z')
 	  {
-	prefix[j]=st[i];
+	prefix[j]=infix[i];
 	j++;
 	  }
 	else
 	{
-		while(prec(stack[top])>prec(st[i]))
+		while(prec(stack[top])>prec(infix[i]))
 		{
 			prefix[j]=pop();
 			j++;
 		}
-		push(st[i]);
+		push(infix[i]);
 	}
       }
 prefix[j]='\0';
